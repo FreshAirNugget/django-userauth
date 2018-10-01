@@ -18,15 +18,24 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'register' %}">Register</a>
+            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
           </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'basic_app:register' %}">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'basic_app:user_login' %}">Log In</a>
+          </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
-          </li>
+        </li>
         </ul>
         <span class="navbar-text">
-          Navbar text with an inline element
+          <!-- Navbar text with an inline element -->
         </span>
       </div>
     </nav>
@@ -37,7 +46,7 @@
         <div class="col-sm-3">
           <div class="row">
             <div class="jumbotron">
-              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum numquam ipsum optio laborum debitis eius, incidunt repudiandae.</p>
+              <p class="lead"><a href="{% url 'special' %}">Visit the <em>Special</em></a></p>
             </div>
           </div>
           <div class="row">
